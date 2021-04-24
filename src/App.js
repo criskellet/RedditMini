@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+// App.js
+import React from 'react';
 import './App.css';
+import {RedditPosts} from './features/RedditPreviews/RedditPreviews.js';
+import {RedditHome} from './components/RedditHome/RedditHome';
+/*
+import {
+  BrowserRouter as Router,
+  NavLink
+  
+} from 'react-router-dom';
+<RedditPosts />
+*/
 
-function App() {
+export default function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+      <div>
+        <nav>
+          <ul>
+            <li>Settings</li>
+            <li>New</li>
+            <li>Hot</li>
+          </ul>
+    
+        </nav>
+        
+        <RedditHome />
+
+      </div>
+    
+    
+    
   );
 }
 
-export default App;
+
