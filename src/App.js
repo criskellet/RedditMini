@@ -1,8 +1,11 @@
 // App.js
 import React from 'react';
 import './App.css';
-import {RedditPosts} from './features/RedditPreviews/RedditPreviews.js';
+import {Header} from './components/Header/Header';
 import {RedditHome} from './components/RedditHome/RedditHome';
+
+
+
 /*
 import {
   BrowserRouter as Router,
@@ -17,6 +20,7 @@ export default function App() {
   return (
     
       <div>
+        <Header />
         <nav>
           <ul>
             <li>Settings</li>

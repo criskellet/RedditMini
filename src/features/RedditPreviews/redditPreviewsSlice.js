@@ -1,7 +1,7 @@
 // redditPreviewsSlice.js
 import { createSelector, createSlice} from '@reduxjs/toolkit';
 import { getSubredditPosts } from '../../api/redditApi';
-
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
     posts: [],
@@ -35,6 +35,10 @@ export const redditPostsSlice = createSlice({
         setSearchTerm(state, action) {
             state.searchTerm = action.payload;
         },
+        setSeletectedSubreddit(state,action) {
+            state.selectedSubreddit = action.payload;
+            state.searchTerm = '';
+        }
 
     }
     
@@ -47,7 +51,8 @@ export const {
     startGetPosts,
     getPostsSuccess,
     getPostsFailed,
-    setSearchTerm
+    setSearchTerm,
+    setSelectedSubreddit
 } = redditPostsSlice.actions;
 export default redditPostsSlice.reducer;
 
@@ -75,6 +80,8 @@ export const selectedSubreddit = (state) => state.redditPosts.selectedSubReddit;
 export const selectFilteredPosts = createSelector(
     [selectPosts, selectSearchTerm],
     (posts, searchTerm) => {
+       
+        console.log(`selectFilteredPosts() : [${searchTerm}]`);
         if (searchTerm !== '') {
             return posts.filter((post) => post.title.toLowerCase().includes(searchTerm.toLowerCase()));
         }

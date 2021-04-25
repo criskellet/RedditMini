@@ -1,5 +1,5 @@
 // Post.js
-import React, {useState} from 'react';
+import React from 'react';
 
 const Post = (props) => {
     console.log(`props: ${props}`);

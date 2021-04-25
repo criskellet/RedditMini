@@ -11,12 +11,14 @@ export const getSubredditPosts = async(subreddit) => {
 };
 
 export const getSubreddits = async() => {
+    console.log("In getSubReddits(): ");
     const response = await fetch(`${API_ROOT}/subreddits.json`);
     const json = await response.json();
     return json.data.children.map((subreddit) => subreddit.data);
 };
 
-export const getPosttPosts = async(permalink) => {
+export const getPostComments = async(permalink) => {
+    console.log("In getPostComments(): ");
     const response = await fetch(`${API_ROOT}${permalink}.json`);
     const json = await response.json();
     return json[1].data.children.map((subreddit) => subreddit.data);

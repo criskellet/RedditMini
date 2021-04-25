@@ -1,8 +1,7 @@
 // RedditPreviews.js
-import React, { useEffect} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {
-    loadRedditPosts,
     selectRedditPosts,
     isLoadingRedditPosts
 } from './redditPreviewsSlice';
@@ -11,20 +10,18 @@ import Post from '../../components/Posts/Posts.js';
 
 export const RedditPosts = () => {
     console.log("RedditPosts");
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     const redditPosts = useSelector(selectRedditPosts);
     const isLoading = useSelector(isLoadingRedditPosts);
 
     console.log(redditPosts);
-    /*
-    useEffect(() => {
-        dispatch(loadRedditPosts());
-
-    }, [dispatch]);
-    */
+    
 
     if (isLoading) {
         return <div> Loading Reddit posts...</div>;
+    }
+    if (redditPosts === 'undefined') {
+        return;
     }
     if (!redditPosts) {
         return;
@@ -44,4 +41,3 @@ export const RedditPosts = () => {
         </section>
     );
 };
-//export default RedditPosts;

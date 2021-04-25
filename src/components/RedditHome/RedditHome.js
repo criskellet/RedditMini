@@ -4,15 +4,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import Post from '../Posts/Posts';
 import {
     fetchPosts,
-    selectFilteredPosts,
-    setSearchTerm
+    selectFilteredPosts
 } from '../../features/RedditPreviews/redditPreviewsSlice';
 
 export const RedditHome = () => {
     console.log("RedditHome");
-    
-    //const redditPosts = useSelector(selectRedditPosts);
-    //const isLoading = useSelector(isLoadingRedditPosts);
     
     const reddit = useSelector((state) => state.redditPosts);
     const {isLoadingRedditPosts, errorLoadingRedditPosts, searchTerm, selectedSubreddit} = reddit;
@@ -34,6 +30,15 @@ export const RedditHome = () => {
 
 
     // if there are no posts
+    if (posts === 'undefined' || !posts) {
+        return (
+            <div>
+                <h2> Undefined or null</h2>
+            </div>
+        );
+
+    }
+    
     if (!posts.length) {
         return (
             <div>
@@ -56,4 +61,3 @@ export const RedditHome = () => {
         
     );
 };
-//export default RedditHome;
